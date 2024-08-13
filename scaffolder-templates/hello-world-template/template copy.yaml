@@ -1,0 +1,63 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: rhdh-pepsico
+  title: Azure DevOps Project Onboarding
+  description: Onboard a new project to Azure DevOps for PepsiCo
+  tags:
+    - .net
+spec:
+  owner: rhdh
+  type: service
+  parameters:
+    - title: Azure DevOps Project Onboarding
+      properties:
+        sector:
+          title: Sector
+          type: string
+          enum:
+            - PFNA
+            - PBNA
+        ado_platform:
+          title: ADO Platform
+          type: string
+          enum:
+            - SandBox/Personal
+            - Production
+        ado_status:
+          title: Do you have an ADO Project?
+          type: string
+          enum:
+            - Yes
+            - No
+        clarity_id_status:
+          title: Do you have a Clarity ID?
+          type: string
+          enum:
+            - Yes
+            - No        
+        clarity_id:
+          title: Clarity ID
+          type: string
+          default: Clarity ID*
+          description: Clarity ID
+        ado_project_name:
+          title: ADO Project Name
+          type: string
+          default: ADO Project Name *
+          description: ADO Project Name
+        ado_project_type:
+          title: ADO Project Type
+          type: string
+          default: ADO Project Type *
+          description: ADO Project Type
+
+  steps:
+    - id: log-message
+      name: Log Message
+      action: debug:log
+      input:
+        message: 'Hello, ${{ parameters.sector }} from ${{ parameters.ado_platform }}!'
+  
+  output:
+    message: 'The parameters you provided are: ${{ parameters.sector }} and ${{ parameters.ado_platform }}'
