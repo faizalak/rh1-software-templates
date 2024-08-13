@@ -5,7 +5,7 @@ metadata:
   title: Azure DevOps Project Onboarding
   description: Onboard a new project to Azure DevOps for PepsiCo
   tags:
-    - .net
+    - dotnet
 spec:
   owner: rhdh
   type: service
